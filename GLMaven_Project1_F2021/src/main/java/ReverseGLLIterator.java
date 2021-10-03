@@ -6,15 +6,12 @@ class ReverseGLLIterator<E> implements Iterator<E>{
   //
   private GenericList<E>.Node<E> cur;
 
-  // this might cause problems
-  //
-  private GenericQueue<E> myQueue;
-
   //
   // constructor
   //
-  ReverseGLLIterator(){
-    this.cur = this.myQueue.tail;
+  ReverseGLLIterator(GenericList<E>.Node<E> _tail){
+    this.cur = _tail;
+    System.out.println("this is cur in ReverseGLLIterator: " + this.cur.data);
   }
   //
   // **********************
@@ -25,7 +22,7 @@ class ReverseGLLIterator<E> implements Iterator<E>{
   //
 	@Override
 	public boolean hasNext() {
-		return cur.prev != null;
+		return cur != null;
 	}
 
   //
@@ -33,7 +30,7 @@ class ReverseGLLIterator<E> implements Iterator<E>{
   // 
 	@Override
 	public E next() {
-    E data = cur.prev.data;
+    E data = cur.data;
     cur = cur.prev;
 		return data;
 	}

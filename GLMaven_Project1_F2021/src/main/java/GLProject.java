@@ -7,6 +7,7 @@
 
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.Iterator;
 
 
 public class GLProject {
@@ -15,80 +16,84 @@ public class GLProject {
     // TODO Auto-generated method stub
     System.out.println("Welcome to project 1");
 
-    System.out.println("GenericQueue testing");
+    System.out.println("GenericList testing");
 
-    GenericQueue<Integer> myQueue = new GenericQueue<Integer>();
+    GenericQueue<Integer> list = new GenericQueue<Integer>();
+    // GenericStack<Integer> list = new GenericStack<>();
 
-    int size = myQueue.getLength();
+    int size = list.getLength();
     System.out.println("this is size: " + size);
-    myQueue.print();
+    list.print();
 
 
     System.out.println("Adding '1' with add()");
-    myQueue.add(1);
-    size = myQueue.getLength();
+    list.add(1);
+    size = list.getLength();
     System.out.println("this is size: " + size);
-    System.out.println("Queue:");
-    myQueue.print();
+    System.out.println("List:");
+    list.print();
 
 
-    System.out.println("Adding '2' with enqueue()");
-    myQueue.enqueue(2);
-    size = myQueue.getLength();
+    System.out.println("Adding '2' with add()");
+    list.add(2);
+    size = list.getLength();
     System.out.println("this is size: " + size);
-    System.out.println("Queue:");
-    myQueue.print();
+    System.out.println("List:");
+    list.print();
+
+    System.out.println("foreach test, List: ");
+    list.forEach(e -> System.out.println(e));
 
     System.out.println("removeTail()");
-    myQueue.removeTail();
-    size = myQueue.getLength();
+    list.removeTail();
+    size = list.getLength();
     System.out.println("this is size: " + size);
-    System.out.println("Queue:");
-    myQueue.print();
+    System.out.println("List:");
+    list.print();
 
     System.out.println('\n');
 
     System.out.println("dumplist()");
-    ArrayList<Integer> newArray = myQueue.dumplist();
-    size = myQueue.getLength();
+    ArrayList<Integer> newArray = list.dumplist();
+    size = list.getLength();
     System.out.println("this is size(and should be 0): " + size);
-    System.out.println("Queue:");
-    myQueue.print();
+    System.out.println("List:");
+    list.print();
     System.out.println("Array:");
     newArray.forEach(e -> System.out.println(e));
 
     
     System.out.println("Adding '100' with add()");
-    myQueue.add(100);
-    size = myQueue.getLength();
+    list.add(100);
+    size = list.getLength();
     System.out.println("this is size: " + size);
-    System.out.println("Queue:");
-    myQueue.print();
+    System.out.println("List:");
+    list.print();
 
 
-    System.out.println("Adding '2432' with enqueue()");
-    myQueue.enqueue(2432);
-    size = myQueue.getLength();
+    System.out.println("Adding '2432' with add()");
+    list.add(2432);
+    size = list.getLength();
     System.out.println("this is size: " + size);
-    System.out.println("Queue:");
-    myQueue.print();
+    System.out.println("List:");
+    list.print();
 
     System.out.println("get index with get(2)");
-    int index2 = myQueue.get(2);
+    int index2 = list.get(2);
     System.out.println("This is the value of the index that was requested: " + index2);
 
     System.out.println("get index with get(1)");
-    index2 = myQueue.get(1);
+    index2 = list.get(1);
     System.out.println("This is the value of the index that was requested: " + index2);
 
     System.out.println("set index with set(1, 445)");
-    int setme = myQueue.set(1, 445);
+    int setme = list.set(1, 445);
     System.out.println("This is value of index 1 after set() " + setme);
-    System.out.println("Queue:");
-    myQueue.print();
+    System.out.println("List:");
+    list.print();
 
     System.out.println("getting a list iterator with listiterator(2)");
-    ListIterator<Integer> newlistiter = myQueue.listiterator(2);
+    ListIterator<Integer> newlistiter = list.listiterator(2);
     if(newlistiter.hasPrevious()){
       System.out.println("this should be 445: " + newlistiter.previous());
     }
@@ -102,7 +107,11 @@ public class GLProject {
     int previndex = newlistiter.previousIndex();
     System.out.println("This is prev index: " + previndex);
 
-
+    System.out.println("getting reverse iterator with ReverseGLLIterator");
+    Iterator<Integer> reverse = list.decendingIterator();
+    while(reverse.hasNext()){
+      System.out.println(reverse.next());
+    }
 
 
   }

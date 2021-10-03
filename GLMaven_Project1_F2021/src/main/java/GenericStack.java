@@ -26,7 +26,18 @@ class GenericStack<T> extends GenericList<T> {
   public void add(T data) {
 
     Node<T> newN = new Node<T>(data);
-    newN.next = getHead();
+
+    if(getLength() == 0){
+
+      setHead(newN);
+      tail = newN;
+    } else {
+      setHead(newN);
+      newN.next = tail;
+      tail.prev = newN;
+      System.out.println("This was just added: " + newN.data + " -> " + newN.next.data);
+      System.out.println("This was just added: " + newN.data + " <- " + tail.data);
+    }
 
     int length = getLength();
     setLength(length += 1);
@@ -53,6 +64,8 @@ class GenericStack<T> extends GenericList<T> {
   // member
   //
   public T removeTail() {
+
+    if(getLength() == 0) return null; 
 
     T returnme = this.tail.data;
     this.tail = this.tail.prev;

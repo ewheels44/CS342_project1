@@ -126,9 +126,9 @@ abstract class GenericList<T> implements Iterable<T> {
   //
   public T delete() {
 
-    if (this.head == null)
-      return null;
-    // if(this.length == 0) return null;
+    // if (this.head == null)
+    //   return null;
+    if(this.length == 0) return null;
 
     // not sure if this deletes it??
     //
@@ -244,7 +244,23 @@ abstract class GenericList<T> implements Iterable<T> {
   // list in reverse order( tail to head)
   //
   public Iterator<T> decendingIterator() {
-    return new ReverseGLLIterator<>();
+
+    // this will not scale well !!!
+    // 
+    Node<T> cur = this.head;
+    int indexcounter = 0;
+
+    while (cur.next != null) {
+      if(indexcounter == getLength()){
+        break;
+      } 
+      else{
+        cur = cur.next;
+        indexcounter++;
+      }
+    }
+    
+    return new ReverseGLLIterator<>(cur);
   }
 
 }

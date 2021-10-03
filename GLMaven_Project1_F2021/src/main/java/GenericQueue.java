@@ -29,6 +29,7 @@ class GenericQueue<T> extends GenericList<T> {
     
     Node<T> newN = new Node<T>(data);
 
+    int length = getLength();
     // if the list is empty
     //
     if(getLength() == 0){
@@ -36,9 +37,6 @@ class GenericQueue<T> extends GenericList<T> {
       setHead(newN);
       tail = newN;
 
-      // this should be 0
-      int length = getLength();
-      setLength(length +=1);
     }
     else{
 
@@ -50,9 +48,10 @@ class GenericQueue<T> extends GenericList<T> {
       tail = newN;
       
       // System.out.println("This was just added: " + newN.prev.data + " <- "+ newN.data + " -> " + newN.next);
-      int length = getLength();
-      setLength(length +=1);
     }
+
+    // this should be 0
+    setLength(length +=1);
   }
 
   // enqueue
@@ -73,6 +72,8 @@ class GenericQueue<T> extends GenericList<T> {
   // member
   //
   public T removeTail() {
+
+    if(getLength() == 0) return null; 
 
     T returnme = this.tail.data;
     this.tail = this.tail.prev;
