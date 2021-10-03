@@ -29,15 +29,6 @@ class GLLIterator<E> implements Iterator<E>{
 	@Override
 	public E next() {
 
-    // if next exsits, its returned
-    // 
-//     if(hasNext()){
-//       cur = cur.next;
-//     }
-// 
-//     // returing that last value
-//     return cur.data;
-
     E data = cur.data;
     cur = cur.next;
 

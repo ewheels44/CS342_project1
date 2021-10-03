@@ -13,6 +13,9 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
+import java.util.ArrayList;
+import java.util.ListIterator;
+import java.util.Iterator;
 
 @DisplayName("GQTest")
 @TestMethodOrder(OrderAnnotation.class)
@@ -21,6 +24,8 @@ class GQTest {
   static int iter;
 
   static GenericQueue<Integer> myTestQueue;
+  static private ArrayList<Integer> myTestArray;
+  static private ListIterator<Integer> myTestListI;
 
 
   @BeforeAll
@@ -102,7 +107,7 @@ class GQTest {
   // enqueue() stress test case(s)
   //
   @ParameterizedTest
-  @ValueSource(ints = {13, 14, 15, 16, 36, })
+  @ValueSource(ints = {13, 14, 15, 16, 36})
   @Order(4)
   void paratest(int val){
     // System.out.println(val);
@@ -134,6 +139,96 @@ class GQTest {
   void paratestTwo(int val){
     // System.out.println(val);
     assertEquals(myTestQueue.get(iter+1), val, "Check your removeTail() func");
+    iter++;
+
+    if(iter == 4) iter = 0;
+  }
+  //
+  // **************************************
+  //
+
+  //
+  // set() test case(s)
+  //
+  @Test
+  @Order(7)
+  void setme(){
+
+    myTestQueue.set(4, 123123);
+
+    assertEquals(123123, myTestQueue.get(4), "Check your set() func");
+      
+  }
+  //
+  // **************************************
+  //
+
+  //
+  // iterator() test case(s)
+  //
+  @Test
+  @Order(8)
+  void iteratortest(){
+    Iterator<Integer> myI = myTestQueue.iterator();
+
+    assertNotNull(myI.hasNext());
+    
+    assertEquals(13, myI.next(), "Check your next() in iterator()");
+    assertEquals(14, myI.next(), "Check your next() in iterator()");
+  }
+  //
+  // **************************************
+  //
+
+  //
+  // listiterator()
+  //
+  @Test
+  @Order(9)
+  void listiterator(){
+    myTestListI = myTestQueue.listiterator(3); 
+    
+    assertNotNull(myTestListI.hasNext());
+    assertNotNull(myTestListI.hasPrevious());
+
+    assertEquals(15, myTestListI.next(), "Check you next() func in listiterator()");
+    assertEquals(4, myTestListI.nextIndex(), "Check your nextIndex() in listiterator()");
+
+    assertEquals(123123, myTestListI.previous(), "Check your previous() func() in listiterator()");
+    assertEquals(3, myTestListI.previousIndex(), "Check your nextIndex() in listiterator()");
+  }
+  //
+  // **************************************
+  //
+
+  //
+  // decendingIterator() test case(s)
+  //
+  @Test
+  @Order(10)
+  void reverse(){
+    Iterator<Integer> myI = myTestQueue.decendingIterator();
+
+    assertNotNull(myI.hasNext());
+
+    assertEquals(123123, myI.next(), "Check your decendingIterator() func");
+    assertEquals(15, myI.next(), "Check your decendingIterator() func");
+
+  }
+  //
+  // **************************************
+  //
+
+  //
+  // dumplist() test case(s)
+  //
+  @Test
+  @Order(11)
+  void dumplist(){
+    int testvalues[] = {13, 14, 15, 16};
+    myTestArray = myTestQueue.dumplist();
+   
+    assertEquals(myTestArray.get(iter), testvalues[iter] , "Check your dumplist() func"); 
     iter++;
   }
   //

@@ -21,7 +21,8 @@ class GLListIterator<E> implements ListIterator<E>{
       this.cur = this.cur.next;
     }
 
-    System.out.println("This should be index 2 value: " + this.cur.data);
+    // System.out.println("Where the hell am I: " + this.cur.data);
+    // System.out.println("Does I have a next: " + this.cur.next.data);
 
   }
   //
@@ -33,6 +34,7 @@ class GLListIterator<E> implements ListIterator<E>{
 
 	@Override
 	public E next() {
+
     E data = this.cur.data;
     this.cur = this.cur.next;
 
@@ -47,8 +49,8 @@ class GLListIterator<E> implements ListIterator<E>{
 	@Override
 	public E previous() {
     
-    E data = this.cur.prev.data;
-    this.cur = cur.prev;
+    E data = this.cur.data;
+    this.cur = this.cur.prev;
 
     this.myindex--;
 

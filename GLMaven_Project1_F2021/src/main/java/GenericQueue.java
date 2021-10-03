@@ -79,6 +79,7 @@ class GenericQueue<T> extends GenericList<T> {
     this.tail = this.tail.prev;
     this.tail.next = null;
 
+    // System.out.println("this is tails prev: " + this.tail.prev.data);
 
     setLength(getLength() - 1);
 

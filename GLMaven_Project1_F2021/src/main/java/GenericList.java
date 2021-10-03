@@ -236,7 +236,7 @@ abstract class GenericList<T> implements Iterable<T> {
     if (index > this.length && index > 0)
       return null;
 
-    return new GLListIterator<>(this.head, index);
+    return new GLListIterator<>(getHead(), index);
 
   }
 

@@ -32,11 +32,16 @@ class GenericStack<T> extends GenericList<T> {
       setHead(newN);
       tail = newN;
     } else {
+      Node<T> head = getHead();
+      head.prev = newN;
+      newN.next = head;
       setHead(newN);
-      newN.next = tail;
-      tail.prev = newN;
-      System.out.println("This was just added: " + newN.data + " -> " + newN.next.data);
-      System.out.println("This was just added: " + newN.data + " <- " + tail.data);
+
+      // setHead(newN);
+      // newN.next = tail;
+      // tail.prev = newN;
+      // System.out.println("This was just added: " + newN.data + " -> " + newN.next.data);
+      // System.out.println("This was just added: " + newN.data + " <- " + tail.data);
     }
 
     int length = getLength();
@@ -68,6 +73,7 @@ class GenericStack<T> extends GenericList<T> {
     if(getLength() == 0) return null; 
 
     T returnme = this.tail.data;
+
     this.tail = this.tail.prev;
     this.tail.next = null;
 

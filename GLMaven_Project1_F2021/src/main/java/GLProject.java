@@ -18,8 +18,8 @@ public class GLProject {
 
     System.out.println("GenericList testing");
 
-    GenericQueue<Integer> list = new GenericQueue<Integer>();
-    // GenericStack<Integer> list = new GenericStack<>();
+    // GenericQueue<Integer> list = new GenericQueue<Integer>();
+    GenericStack<Integer> list = new GenericStack<>();
 
     int size = list.getLength();
     System.out.println("this is size: " + size);
