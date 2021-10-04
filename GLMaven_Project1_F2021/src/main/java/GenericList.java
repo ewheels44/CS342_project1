@@ -174,7 +174,7 @@ abstract class GenericList<T> implements Iterable<T> {
   //
   public T get(int index) {
 
-    if (index > this.length && index > 0)
+    if (index > this.length || index < 0)
       return null;
 
     Node<T> cur = this.head;
@@ -204,7 +204,7 @@ abstract class GenericList<T> implements Iterable<T> {
   //
   public T set(int index, T element) {
 
-    if (index > this.length && index > 0)
+    if (index > this.length || index < 0)
       return null;
 
     Node<T> cur = this.head;
@@ -233,7 +233,7 @@ abstract class GenericList<T> implements Iterable<T> {
   //
   public ListIterator<T> listiterator(int index) {
 
-    if (index > this.length && index > 0)
+    if (index > this.length || index < 0)
       return null;
 
     return new GLListIterator<>(getHead(), index);

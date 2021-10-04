@@ -11,7 +11,7 @@ class ReverseGLLIterator<E> implements Iterator<E>{
   //
   ReverseGLLIterator(GenericList<E>.Node<E> _tail){
     this.cur = _tail;
-    System.out.println("this is cur in ReverseGLLIterator: " + this.cur.data);
+    // System.out.println("this is cur in ReverseGLLIterator: " + this.cur.data);
   }
   //
   // **********************
