@@ -10,8 +10,19 @@ class GenericStack<T> extends GenericList<T> {
   GenericStack() {
 
     super();
-
     this.tail = getHead();
+  }
+
+  GenericStack(T val) {
+
+    Node<T> newN = new Node<T>(val);
+
+    this.tail = newN;
+    setHead(this.tail);
+    newN.data = val;
+
+    int length = getLength();
+    setLength(length +=1);
   }
   //
   // **********************

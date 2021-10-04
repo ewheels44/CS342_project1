@@ -8,7 +8,7 @@ abstract class GenericList<T> implements Iterable<T> {
   // private data members
   //
   private Node<T> head;
-  private int length;
+  private int length = 0;
 
   // inner class Node
   //
@@ -30,8 +30,8 @@ abstract class GenericList<T> implements Iterable<T> {
   //
   GenericList() {
 
-    this.head = new Node<T>(null);
     this.length = 0;
+    this.head = new Node<T>(null);
 
   }
   //

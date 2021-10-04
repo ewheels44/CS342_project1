@@ -10,9 +10,20 @@ class GenericQueue<T> extends GenericList<T> {
   GenericQueue() {
 
     super();
-    // TODO Auto-generated constructor stub
-
     this.tail = getHead();
+  }
+
+  GenericQueue(T val) {
+
+    Node<T> newN = new Node<T>(val);
+
+    this.tail = newN;
+    setHead(this.tail);
+    newN.data = val;
+
+    int length = getLength();
+    setLength(length +=1);
+
   }
   //
   // **********************
